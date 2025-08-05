@@ -1,18 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import Sky from './components/Sky';
+import SkyObjects from './components/SkyObjects';
+import Raindrop from './components/Raindrop';
+import Tree from './components/Tree';
+import Leaves from './components/Leaves';
+import Cursor from './components/Cursor';
+import Hero from './sections/Hero';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-sky-300 to-blue-500 text-white text-3xl font-bold">
-        Tailwind 4.1 is Working!
-      </div>
-    </>
-  )
+    <div className="relative min-h-screen overflow-hidden">
+      <Sky />
+      <SkyObjects />
+      <Hero />
+      <Raindrop />
+      <Tree />
+      <Leaves />
+      <Cursor />
+    </div>
+  );
 }
-
-export default App
