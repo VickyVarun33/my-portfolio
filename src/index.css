@@ -1,37 +1,14 @@
 /* src/index.css */
 @import "tailwindcss";
-
-html,
-body,
-#root {
+html, body, #root {
   margin: 0;
   padding: 0;
-  height: 100%;
   width: 100%;
-  font-family: "Inter", sans-serif;
-  background: linear-gradient(180deg, #071229 0%, #071229 40%, #061827 100%);
+  height: 100%;
+  background: black;
   overflow: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Canvas should occupy full viewport */
 canvas {
   display: block;
-  width: 100vw;
-  height: 100vh;
-}
-
-/* Cinematic vignette & letterbox feel via pseudo overlay */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.35) 60%);
-}
-
-/* small helper classes */
-.pointer-events-none {
-  pointer-events: none;
 }
