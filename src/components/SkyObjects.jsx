@@ -25,10 +25,10 @@ export default function SkyObjects() {
 
   return (
     <>
-      <div ref={cloudRef} className="absolute top-10 left-0 w-48 h-24 bg-white opacity-40 rounded-full blur-2xl" />
+      <div ref={cloudRef} className="absolute top-10 left-0 w-48 h-24 bg-white opacity-10 rounded-full blur-xl" />
       <div
         ref={sunRef}
-        className={`absolute w-20 h-20 rounded-full ${isNight ? 'bg-yellow-100' : 'bg-yellow-400'} shadow-lg`}
+        className={`absolute w-20 h-20 rounded-full ${isNight ? 'bg-yellow-100' : 'bg-yellow-400'} shadow-lg animate-pulse`}
         style={{ position: 'absolute', ...sunMoonStyle }}
       />
     </>
