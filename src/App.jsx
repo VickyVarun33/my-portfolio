@@ -1,20 +1,24 @@
-import React, { Suspense } from "react";
+// src/App.jsx
+import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Environment } from "@react-three/drei";
-import MainScene from "../src/scenes/MainScene";
+import { Suspense } from "react";
+import MainScene from "./scenes/MainScene";
+import "./index.css";
+import TreeMount from "./TreeMount";
 
 export default function App() {
   return (
-    <div className="w-full h-screen">
-      <Canvas camera={{ position: [0, 2, 10], fov: 60 }}>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 10, 5]} intensity={2} castShadow />
+    <div className="w-screen h-screen bg-gradient-to-b from-[#0b1226] via-[#10203a] to-[#0b2a3a]">
+      <Canvas
+        camera={{ position: [0, 1.8, 6], fov: 55 }}
+        gl={{ antialias: true, physicallyCorrectLights: true }}
+        dpr={[1, 2]}
+      >
         <Suspense fallback={null}>
-          <Environment preset="sunset" />
           <MainScene />
         </Suspense>
-        <OrbitControls enableZoom={false} enablePan={false} />
       </Canvas>
+      <TreeMount/>
     </div>
   );
 }

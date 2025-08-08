@@ -1,3 +1,4 @@
+/* src/index.css */
 @import "tailwindcss";
 
 html,
@@ -7,34 +8,30 @@ body,
   padding: 0;
   height: 100%;
   width: 100%;
-  font-family: 'Inter', sans-serif;
-  background-color: transparent;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(180deg, #071229 0%, #071229 40%, #061827 100%);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Canvas should occupy full viewport */
 canvas {
   display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Cinematic vignette & letterbox feel via pseudo overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
   pointer-events: none;
-  z-index: 10;
-  position: absolute;
-  top: 0;
-  left: 0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.02) 0%, rgba(0,0,0,0.35) 60%);
 }
 
-@keyframes fall {
-  0% {
-    transform: translateY(-5%) rotate(0deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh) rotate(360deg);
-    opacity: 0;
-  }
-}
-
-.animate-fall {
-  animation-name: fall;
-  animation-timing-function: ease-in;
-  animation-iteration-count: 1;
+/* small helper classes */
+.pointer-events-none {
+  pointer-events: none;
 }
