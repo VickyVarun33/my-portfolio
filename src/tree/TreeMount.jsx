@@ -1,13 +1,11 @@
-// src/tree/TreeMount.jsx
 import React, { useEffect, useState } from "react";
 import TreeCanvas from "./TreeCanvas";
 import SkillModal from "../components/SkillModal";
 
 /**
- * TreeMount listens for DOM events:
- * - 'tree:start' to mount and start drawing the tree
- * - 'tree:nodes' (custom event) carrying JSON detail of nodes:
- *     event.detail = [{id, x, y, title, description}, ...] (x,y in px relative to window)
+ * Listens for window events:
+ * - 'tree:start' to mount TreeCanvas
+ * - 'tree:nodes' to receive branch node positions and metadata
  */
 export default function TreeMount() {
   const [started, setStarted] = useState(false);
@@ -32,30 +30,29 @@ export default function TreeMount() {
   return (
     <>
       {started && <TreeCanvas />}
-      {/* Node overlays */}
       {nodes.map((n) => (
         <button
           key={n.id}
           onClick={() => setSelected(n)}
+          className="skill-node"
           style={{
             position: "fixed",
             left: `${n.x}px`,
             top: `${n.y}px`,
             transform: "translate(-50%,-50%)",
             zIndex: 40,
-            pointerEvents: "auto",
-            background: "linear-gradient(180deg,#fff,#eee)",
-            borderRadius: "999px",
             width: 28,
             height: 28,
-            boxShadow: "0 6px 18px rgba(0,0,0,0.35)",
+            borderRadius: 28,
+            background: "linear-gradient(180deg,#fff,#e6e6e6)",
+            boxShadow: "0 8px 20px rgba(0,0,0,0.35)",
             border: "none",
             cursor: "pointer",
+            pointerEvents: "auto"
           }}
           title={n.title}
         />
       ))}
-
       {selected && <SkillModal skill={selected} onClose={() => setSelected(null)} />}
     </>
   );
